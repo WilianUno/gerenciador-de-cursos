@@ -1,18 +1,46 @@
-
-const { usuarios } = require('../data');
+const data = require('../data/data');
 
 class UserRepository {
+  findAll() {
+    return data.users;
+  }
+
+  findById(id) {
+    return data.users.find(user => user.id === parseInt(id));
+  }
+
+  findByUsername(username) {
+    return data.users.find(user => user.username === username);
+  }
+
+  create(userData) {
+    const newUser = {
+      id: data.nextId.user++,
+      ...userData
+    };
+    data.users.push(newUser);
+    return newUser;
+  }
+
+  update(id, userData) {
+    const index = data.users.findIndex(user => user.id === parseInt(id));
+    if (index === -1) return null;
     
-    /**
-     * Busca um usuário pelo email.
-     * @param {string} email 
-     * @returns {object | undefined} 
-     */
-    findByEmail(email) {
-        console.log(`[Repository] Buscando usuário por email: ${email}`);
-        return usuarios.find(u => u.email === email);
-    }
+    data.users[index] = {
+      ...data.users[index],
+      ...userData,
+      id: data.users[index].id 
+    };
+    return data.users[index];
+  }
+
+  delete(id) {
+    const index = data.users.findIndex(user => user.id === parseInt(id));
+    if (index === -1) return false;
     
+    data.users.splice(index, 1);
+    return true;
+  }
 }
 
 module.exports = new UserRepository();

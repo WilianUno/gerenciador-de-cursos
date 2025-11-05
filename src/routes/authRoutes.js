@@ -1,9 +1,20 @@
-
 const express = require('express');
-const router = express.Router(); 
-
+const router = express.Router();
 const authController = require('../controllers/authController');
+const { validateLogin } = require('../middlewares/validationMiddleware');
+const { redirectIfAuthenticated } = require('../middlewares/authMiddleware');
 
-router.post('/login', authController.login);
+router.get('/login', redirectIfAuthenticated, authController.renderLogin);
 
-module.exports = router; 
+router.post('/login', validateLogin, authController.login);
+
+router.get('/logout', authController.logout);
+router.post('/logout', authController.logout);
+
+router.post('/register', authController.register);
+
+router.get('/current-user', authController.getCurrentUser);
+
+router.post('/change-password', authController.changePassword);
+
+module.exports = router;

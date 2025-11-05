@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Cursos</title>
+    <title>Formar & Crescer - Transforme o seu futuro</title>
     <link rel="stylesheet" href="../../public/css/login.css">
+    <link rel="icon" href="../../public/images/icone.png" type="image/png">
 </head>
 <body>
     <div class="main-content">
@@ -12,15 +13,20 @@
         <div class="login-container">
             <form class="login-form">
                 <h2>Entrar</h2>
+
                 <div class="input-group">
                     <label for="username">Usuário</label>
                     <input type="text" id="username" name="username" required>
                 </div>
+
                 <div class="input-group">
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password" required>
                 </div>
+
                 <button type="submit">Acessar</button>
+                <button type="button" class="criar-conta" onclick="window.location.href='../cadastro/cadastro.html'">Criar uma conta</button>
+
                 <div class="forgot-password">
                     <a href="#">Esqueceu a senha?</a>
                 </div>

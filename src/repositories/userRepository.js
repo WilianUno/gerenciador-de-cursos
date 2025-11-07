@@ -1,46 +1,49 @@
-const data = require('../data/data');
+// src/repositories/userRepository.js
+const { usuarios } = require('../data/data.js'); 
+const { v4: uuidv4 } = require('uuid');
 
 class UserRepository {
-  findAll() {
-    return data.users;
-  }
 
-  findById(id) {
-    return data.users.find(user => user.id === parseInt(id));
-  }
+    findByUsername(username) {
+        console.log(`[Repository] Buscando usuário: ${username}`);
+        return usuarios.find(u => u.email === username || u.username === username);
+    }
 
-  findByUsername(username) {
-    return data.users.find(user => user.username === username);
-  }
+    findById(id) {
+        console.log(`[Repository] Buscando usuário por ID: ${id}`);
+        return usuarios.find(u => u.id === id);
+    }
 
-  create(userData) {
-    const newUser = {
-      id: data.nextId.user++,
-      ...userData
-    };
-    data.users.push(newUser);
-    return newUser;
-  }
+    create(userData) {
+        console.log(`[Repository] Criando novo usuário: ${userData.username}`);
+        
+        const newUser = {
+            id: uuidv4(),
+            nome: userData.nome,
+            email: userData.username, 
+            username: userData.username,
+            password: userData.password,
+            tipo: userData.tipo || 'aluno' 
+        };
 
-  update(id, userData) {
-    const index = data.users.findIndex(user => user.id === parseInt(id));
-    if (index === -1) return null;
-    
-    data.users[index] = {
-      ...data.users[index],
-      ...userData,
-      id: data.users[index].id 
-    };
-    return data.users[index];
-  }
+        usuarios.push(newUser);
+        
+        return newUser;
+    }
 
-  delete(id) {
-    const index = data.users.findIndex(user => user.id === parseInt(id));
-    if (index === -1) return false;
-    
-    data.users.splice(index, 1);
-    return true;
-  }
+    update(userId, updates) {
+        console.log(`[Repository] Atualizando usuário ID: ${userId}`);
+        
+        const userIndex = usuarios.findIndex(u => u.id === userId);
+        
+        if (userIndex === -1) {
+            return null;
+        }
+
+        usuarios[userIndex] = { ...usuarios[userIndex], ...updates };
+        
+        return usuarios[userIndex];
+    }
 }
 
 module.exports = new UserRepository();

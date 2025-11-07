@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formar & Crescer - Transforme o seu futuro</title>
-    <link rel="stylesheet" href="../../public/css/login.css">
-    <link rel="icon" href="../../public/images/icone.png" type="image/png">
+    <title>Formar & Crescer - Login</title>
+    
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="icon" href="/images/icone.png" type="image/png">
 </head>
 <body>
     <div class="main-content">
 
         <div class="login-container">
-            <form class="login-form">
+            <form class="login-form"> 
                 <h2>Entrar</h2>
 
                 <div class="input-group">
@@ -24,8 +25,11 @@
                     <input type="password" id="password" name="password" required>
                 </div>
 
+                <div id="error-message" class="error-message"></div>
+
                 <button type="submit">Acessar</button>
-                <button type="button" class="criar-conta" onclick="window.location.href='../cadastro/cadastro.html'">Criar uma conta</button>
+                
+                <button type="button" class="criar-conta" onclick="window.location.href='/register'">Criar uma conta</button>
 
                 <div class="forgot-password">
                     <a href="#">Esqueceu a senha?</a>
@@ -34,9 +38,11 @@
         </div>
 
         <div class="right-side">
-            <img src="../../public/images/cursos.jpg" alt="Oportunidades">
+            <img src="/images/cursos.jpg" alt="Oportunidades">
         </div>
 
     </div>
+
+    <script src="/js/login.js"></script>
 </body>
 </html>

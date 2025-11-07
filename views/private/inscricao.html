@@ -1,104 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formar & Crescer - Transforme o seu futuro</title>
+    <title>Formar & Crescer - Inscrição</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/css/dashboard.css" /> 
+    <link rel="icon" href="/images/icone.png" type="image/png" />
+</head>
 
-    <link rel="stylesheet" href="../../public/css/dashboard.css" />
-    <link rel="icon" href="../../public/images/icone.png" type="image/png" />
-  </head>
-
-  <body class="bg-light text-dark">
+<body class="bg-light text-dark">
     <div class="container py-5">
-      <div class="text-center mb-5">
-        <h1>Transforme o seu futuro com a <strong>Formar & Crescer!</strong></h1>
-        <p class="lead mt-4">
-          Cada novo conhecimento é uma porta que se abre para novas oportunidades.<br />
-          Na <strong>Formar & Crescer</strong>, acreditamos que aprender é o
-          primeiro passo para conquistar seus sonhos.
-        </p>
-        <p>
-          Aqui, você encontra cursos feitos para desenvolver suas habilidades,
-          ampliar seus horizontes e impulsionar sua carreira.
-        </p>
-        <p>
-          Não espere o “momento certo” — crie o seu agora!<br />
-          Venha fazer parte de uma comunidade que cresce com propósito e aprende
-          com paixão.
-        </p>
-        <p class="fw-bold fs-5 mt-3">
-          Inscreva-se hoje mesmo e comece sua jornada rumo ao sucesso!
-        </p>
-      </div>
-
-      <form class="row g-3" novalidate>
-        <div class="col-md-4">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" required />
+        <div class="text-center mb-4">
+            <h1>Crie sua conta na <strong>Formar & Crescer!</strong></h1>
+            <p class="lead mt-3">
+                Preencha o formulário para iniciar sua jornada de aprendizado.
+            </p>
         </div>
+        
+        <form class="row g-3" id="form-inscricao" novalidate>
+            <div class="col-12">
+                <div id="message-container" class="alert" role="alert" style="display: none;">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="nome" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="nome" required /> 
+            </div>
+            <div class="col-md-6">
+                <label for="usuario" class="form-label">Nome de usuário (para login)</label>
+                <div class="input-group">
+                    <span class="input-group-text">@</span>
+                    <input type="text" class="form-control" id="usuario" placeholder="ex: joaosilva" required />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" required />
+            </div>
+            <div class="col-md-6">
+                <label for="confirmarSenha" class="form-label">Confirmar Senha</label>
+                <input type="password" class="form-control" id="confirmarSenha" required />
+            </div>
+            <div class="col-md-6">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="cidade" required />
+            </div>
+            <div class="col-md-6">
+                <label for="curso" class="form-label">Selecione o Curso de Interesse</label>
+                <select class="form-select" id="curso" required>
+                    <option selected disabled value="">...</option>
+                    <option>Sistemas de Informação</option>
+                    </select>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="termos" required />
+                    <label class="form-check-label" for="termos">
+                        Concordo com os termos e condições.
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Criar Conta</button>
+            </div>
+        </form>
 
-        <div class="col-md-4">
-          <label for="sobrenome" class="form-label">Sobrenome</label>
-          <input type="text" class="form-control" id="sobrenome" required />
+        <div class="text-center mt-4">
+            <p>Já tem uma conta? <a href="/login">Entre aqui</a></p>
         </div>
-
-        <div class="col-md-4">
-          <label for="usuario" class="form-label">Nome de usuário</label>
-          <div class="input-group">
-            <span class="input-group-text">@</span>
-            <input
-              type="text"
-              class="form-control"
-              id="usuario"
-              placeholder="ex: joaosilva"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <label for="cidade" class="form-label">Cidade</label>
-          <input type="text" class="form-control" id="cidade" required />
-        </div>
-
-        <div class="col-md-3">
-          <label for="curso" class="form-label">Selecione o Curso</label>
-          <select class="form-select" id="curso" required>
-            <option selected disabled value="">...</option>
-            <option>Sistemas de Informação</option>
-            <option>Ciência da Computação</option>
-            <option>Engenharia de Software</option>
-            <option>Análise e Desenvolvimento de Sistemas</option>
-            <option>Engenharia Civil</option>
-            <option>Direito</option>
-            <option>Administração</option>
-            <option>Enfermagem</option>
-            <option>Arquitetura e Urbanismo</option>
-            <option>Educação Física</option>
-          </select>
-        </div>
-
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="termos" required />
-            <label class="form-check-label" for="termos">
-              Concordo com os termos e condições.
-            </label>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit">Enviar</button>
-        </div>
-      </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    
+    <script src="/js/inscricao.js"></script>
+</body>
 </html>

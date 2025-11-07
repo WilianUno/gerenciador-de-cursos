@@ -1,103 +1,47 @@
-const data = {
-    users: [
-        {
-            id: 1,
-            username: 'admin',
-            password: 'admin123',
-            tipo: 'admin',
-            nome: 'Administrador'
-        },
-        {
-            id: 2,
-            username: 'prof',
-            password: 'prof123',
-            tipo: 'professor',
-            professorId: 1
-        }
-    ],
+// src/data/data.js
+const { v4: uuidv4 } = require('uuid');
 
-    professores: [
-        {
-            id: 1,
-            nome: 'João Silva',
-            email: 'joao.silva@unochapeco.edu.br',
-            especialidade: 'Desenvolvimento Web',
-            telefone: '(49) 99999-9999'
-        },
-        {
-            id: 2,
-            nome: 'Isadora Pompeo',
-            email: 'isadora.pompeo@unochapeco.edu.br',
-            especialidade: 'Banco de Dados',
-            telefone: '(49) 88888-8888'
-        }
-    ],
+// Vamos usar 'let' porque esses arrays serão modificados
+let usuarios = [
+    {
+        id: 'prof-uuid-1', // ID fixo para facilitar testes de login
+        nome: 'Prof. Ana Silva',
+        email: 'ana@email.com',
+        username: 'ana@email.com',
+        senha: '123',
+        tipo: 'professor'
+    },
+    {
+        id: 'aluno-uuid-1', // ID fixo para facilitar testes
+        nome: 'Bruno Lima',
+        email: 'bruno@email.com',
+        username: 'bruno@email.com',
+        senha: '123',
+        tipo: 'aluno'
+    }
+];
 
-    cursos: [
-        {
-            id: 1,
-            nome: 'Desenvolvimento Web',
-            descricao: 'Aprenda a criar sites e aplicações web modernas.',
-            professorId: 1,
-            cargaHoraria: 60,
-            vagas: 30,
-            vagasOcupadas: 2,
-            periodo: '2024/1'
-        },
-        {
-            id: 2,
-            nome: 'Banco de Dados',
-            descricao: 'Introdução ao design e gerenciamento de bancos de dados.',
-            professorId: 2,
-            cargaHoraria: 45,
-            vagas: 25,
-            vagasOcupadas: 1,
-            periodo: '2024/1'
-        }
-    ],
+let cursos = [
+    {
+        id: 'curso-uuid-1',
+        titulo: 'Introdução ao Node.js',
+        descricao: 'Aprenda o básico de Node.js, Express e EJS.',
+        idProfessor: 'prof-uuid-1'
+    }
+];
 
-    alunos: [
-        {
-            id: 1,
-            nome: 'Pedro Santos',
-            email: 'pedro.santos@unochapeco.edu.br',
-            matricula: '2024001',
-            curso: 'Ciencias da Computação'
-        },
-        {
-            id: 2,
-            nome: 'Ana Oliveira',
-            email: 'ana.oliveira@unochapeco.edu.br',
-            matricula: '2024002',
-            curso: 'Engenharia de Software'
-        }
-    ],
+let matriculas = [
+    {
+        idUsuario: 'aluno-uuid-1',
+        idCurso: 'curso-uuid-1',
+        dataInscricao: new Date()
+    }
+];
 
-    matriculas: [
-        {
-            id: 1,
-            alunoId: 1,
-            cursoId: 1,
-            dataMatricula: '2024-03-01',
-            status: 'ativo'
-        },
-        {
-            id: 2,
-            alunoId: 2,
-            cursoId: 1,
-            dataMatricula: '2024-03-01',
-            status: 'ativo'
-        }
-    ],
-
-    nextIds: {
-        userId: 3,
-        professorId: 3,
-        cursoId: 3,
-        alunoId: 3,
-        matriculaId: 3
-    }   
+// --- ESTA É A PARTE MAIS IMPORTANTE ---
+// Garante que os arrays sejam exportados corretamente
+module.exports = {
+    usuarios,
+    cursos,
+    matriculas
 };
-
-
-module.exports = data;

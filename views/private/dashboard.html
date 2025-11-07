@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Formar & Crescer</title>
+    
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="icon" href="/images/icone.png" type="image/png">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>Formar & Crescer</h1>
+        <div>
+            <a href="#" id="logout-button">Sair</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2>Navegação</h2>
+            <a href="/dashboard" class="active">Início</a>
+            
+            <a href="/cursos">Meus Cursos</a>
+            <a href="/alunos">Alunos</a>
+        </aside>
+
+        <main class="main-content">
+            
+            <h2 id="welcome-message">Carregando...</h2>
+            
+            <p>Selecione uma opção no menu ao lado.</p>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h3>Node.js Básico</h3>
+                    <p>Aprenda a criar APIs.</p>
+                    <button class="btn">Ver detalhes</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+
+</body>
+</html>

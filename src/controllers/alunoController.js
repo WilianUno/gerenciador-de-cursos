@@ -1,173 +1,80 @@
-const alunoService = require('../services/alunoService');
+const authService = require('../services/authService');
 
-class AlunoController {
-  async renderPage(req, res) {
-    try {
-      res.sendFile('alunos.html', { root: './views/private' });
-    } catch (error) {
-      console.error('Erro ao renderizar página:', error);
-      res.status(500).json({ error: 'Erro ao carregar página' });
+class AuthController {
+    
+    async renderLogin(req, res) {
+        try {
+            res.sendFile('login.html', { root: './views/auth' }); 
+        } catch (error) {
+            res.status(500).json({ error: 'Erro ao carregar página de login' });
+        }
     }
-  }
 
-  async getAll(req, res) {
-    try {
-      const result = await alunoService.getAll();
-      
-      if (result.success) {
-        return res.status(200).json(result.data);
-      }
-      
-      return res.status(500).json({ error: result.message });
-    } catch (error) {
-      console.error('Erro ao listar alunos:', error);
-      res.status(500).json({ error: 'Erro ao listar alunos' });
+    async login(req, res) {
+        try {
+            const { username, password } = req.body;
+            const result = authService.login(username, password); 
+            
+            if (result.success) {
+                req.session.user = result.user; 
+                return res.status(200).json(result);
+            }
+            
+            return res.status(401).json(result);
+        } catch (error) {
+            res.status(500).json({ error: 'Erro ao processar login' });
+        }
     }
-  }
+    async logout(req, res) {
+        try {
+            const result = await authService.logout(req.session); 
+            
+            res.clearCookie('connect.sid'); 
+            return res.status(200).json(result);
 
-  async getById(req, res) {
-    try {
-      const { id } = req.params;
-      const result = await alunoService.getById(id);
-      
-      if (result.success) {
-        return res.status(200).json(result.data);
-      }
-      
-      return res.status(404).json({ error: result.message });
-    } catch (error) {
-      console.error('Erro ao buscar aluno:', error);
-      res.status(500).json({ error: 'Erro ao buscar aluno' });
+        } catch (error) {
+            console.error('Erro no logout:', error);
+            res.status(500).json({ error: error.message || 'Erro ao processar logout' });
+        }
     }
-  }
 
-  async create(req, res) {
-    try {
-      const result = await alunoService.create(req.body);
-      
-      if (result.success) {
-        return res.status(201).json({
-          success: true,
-          message: result.message,
-          data: result.data
-        });
-      }
-      
-      return res.status(400).json({
-        success: false,
-        message: result.message
-      });
-    } catch (error) {
-      console.error('Erro ao criar aluno:', error);
-      res.status(500).json({ error: 'Erro ao criar aluno' });
+    async register(req, res) {
+        try {
+            const result = authService.register(req.body); 
+            
+            if (result.success) {
+                return res.status(201).json(result);
+            }
+            
+            return res.status(400).json(result);
+        } catch (error) {
+            res.status(500).json({ error: 'Erro ao registrar usuário' });
+        }
     }
-  }
 
-  async update(req, res) {
-    try {
-      const { id } = req.params;
-      const result = await alunoService.update(id, req.body);
-      
-      if (result.success) {
+    async getCurrentUser(req, res) {
         return res.status(200).json({
-          success: true,
-          message: result.message,
-          data: result.data
+            success: true,
+            user: req.session.user
         });
-      }
-      
-      return res.status(400).json({
-        success: false,
-        message: result.message
-      });
-    } catch (error) {
-      console.error('Erro ao atualizar aluno:', error);
-      res.status(500).json({ error: 'Erro ao atualizar aluno' });
     }
-  }
 
-  async delete(req, res) {
-    try {
-      const { id } = req.params;
-      const result = await alunoService.delete(id);
-      
-      if (result.success) {
-        return res.status(200).json({
-          success: true,
-          message: result.message
-        });
-      }
-      
-      return res.status(400).json({
-        success: false,
-        message: result.message
-      });
-    } catch (error) {
-      console.error('Erro ao deletar aluno:', error);
-      res.status(500).json({ error: 'Erro ao deletar aluno' });
+    async changePassword(req, res) {
+        try {
+            const { oldPassword, newPassword } = req.body;
+            const userId = req.session.user.id; 
+            
+            const result = authService.changePassword(userId, oldPassword, newPassword);
+            
+            if (result.success) {
+                return res.status(200).json(result);
+            }
+            
+            return res.status(400).json(result);
+        } catch (error) {
+            res.status(500).json({ error: 'Erro ao alterar senha' });
+        }
     }
-  }
-
-  async matricularEmCurso(req, res) {
-    try {
-      const { alunoId, cursoId } = req.body;
-      const result = await alunoService.matricularEmCurso(alunoId, cursoId);
-      
-      if (result.success) {
-        return res.status(201).json({
-          success: true,
-          message: result.message,
-          data: result.data
-        });
-      }
-      
-      return res.status(400).json({
-        success: false,
-        message: result.message
-      });
-    } catch (error) {
-      console.error('Erro ao matricular aluno:', error);
-      res.status(500).json({ error: 'Erro ao matricular aluno' });
-    }
-  }
-
-  async cancelarMatricula(req, res) {
-    try {
-      const { alunoId, cursoId } = req.body;
-      const result = await alunoService.cancelarMatricula(alunoId, cursoId);
-      
-      if (result.success) {
-        return res.status(200).json({
-          success: true,
-          message: result.message
-        });
-      }
-      
-      return res.status(400).json({
-        success: false,
-        message: result.message
-      });
-    } catch (error) {
-      console.error('Erro ao cancelar matrícula:', error);
-      res.status(500).json({ error: 'Erro ao cancelar matrícula' });
-    }
-  }
-
-  async getCursos(req, res) {
-    try {
-      const { id } = req.params;
-      const result = await alunoService.getCursos(id);
-      
-      if (result.success) {
-        return res.status(200).json(result.data);
-      }
-      
-      return res.status(404).json({ error: result.message });
-    } catch (error) {
-      console.error('Erro ao buscar cursos do aluno:', error);
-      res.status(500).json({ error: 'Erro ao buscar cursos' });
-    }
-  }
 }
 
-module.exports = new AlunoController();
+module.exports = new AuthController();

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formar & Crescer - Cursos</title>
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/Imagens/icone.png" type="image/png">
+    
+    <style>
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1001; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Formar & Crescer</h1>
+        <div>
+            <a href="/">Início</a>
+            <a href="/cursos">Cursos</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2>Navegação</h2>
+            <a href="/dashboard">Painel</a>
+            <a href="/cursos" class="active">Cursos</a>
+            <a href="/professores">Professores</a>
+            <a href="/alunos">Alunos</a>
+        </aside>
+
+        <main class="main-content container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Nossos Cursos</h2>
+                <button id="btn-abrir-modal-curso" class="btn" style="display: none;">Criar Novo Curso</button>
+            </div>
+            
+            <div id="cards-container-cursos" class="cards-container">
+                <p>Carregando cursos...</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-curso" class="modal">
+        <div class="modal-content">
+            <span class="close" id="btn-fechar-modal-curso">&times;</span>
+            <h2>Novo Curso</h2>
+            
+            <form id="form-criar-curso">
+                <div class="form-group">
+                    <label for="titulo">Título do Curso</label>
+                    <input type="text" id="titulo" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" class="form-control" required>
+                </div>
+
+                <div id="modal-error-message" class="error-message" style="display: none;"></div>
+
+                <button type="submit" class="btn">Salvar Curso</button>
+            </form>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5549999999999" class="whatsapp-button" target="_blank">
+        <img src="/Imagens/icone_wpp.png" alt="WhatsAppCrescer">
+    </a>
+
+    <script src="/js/curso.js"></script> 
+</body>
+</html>

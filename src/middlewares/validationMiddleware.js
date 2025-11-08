@@ -1,5 +1,3 @@
-// src/middlewares/validationMiddleware.js
-
 const validateLogin = (req, res, next) => {
     const { username, password } = req.body;
     const errors = [];
@@ -18,7 +16,7 @@ const validateLogin = (req, res, next) => {
 };
 
 const validateProfessor = (req, res, next) => {
-    const { nome, email, especialidade } = req.body; // Removi telefone
+    const { nome, email, especialidade } = req.body;
     const errors = [];
     
     if (!nome || nome.trim() === '') {
@@ -40,28 +38,26 @@ const validateProfessor = (req, res, next) => {
 };
 
 const validateCurso = (req, res, next) => {
-    const { nome, descricao, professorId, cargaHoraria, vagas, periodo } = req.body;
+    const { titulo, descricao } = req.body; 
     const errors = [];
     
-    if (!nome || nome.trim() === '') {
-        errors.push('Nome do curso é obrigatório');
+    if (!titulo || titulo.trim() === '') { 
+        errors.push('Título do curso é obrigatório');
     }
+    
     if (!descricao || descricao.trim() === '') {
         errors.push('Descrição é obrigatória');
     }
-    if (!professorId || isNaN(professorId)) {
-        errors.push('Professor é obrigatório');
-    }
-    // (Adicione mais validações conforme precisar)
     
     if (errors.length > 0) {
-        return res.status(400).json({ errors });
+        return res.status(400).json({ errors: errors, message: errors.join(', ') });
     }
-    next();
+    
+    next(); 
 };
 
 const validateAluno = (req, res, next) => {
-    const { nome, email, matricula, curso } = req.body;
+    const { nome, email } = req.body;
     const errors = [];
     
     if (!nome || nome.trim() === '') {
@@ -70,7 +66,6 @@ const validateAluno = (req, res, next) => {
     if (!email || email.trim() === '') {
         errors.push('Email é obrigatório');
     }
-    // (Adicione mais validações)
 
     if (errors.length > 0) {
         return res.status(400).json({ errors });
@@ -95,7 +90,6 @@ const validateMatricula = (req, res, next) => {
     next();
 };
 
-// Este é o ÚNICO export deste arquivo
 module.exports = {
     validateLogin,
     validateProfessor,

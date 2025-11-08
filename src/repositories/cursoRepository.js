@@ -1,4 +1,5 @@
 const { cursos, usuarios } = require('../data/data.js');
+const { v4: uuidv4 } = require('uuid'); 
 
 class CursoRepository {
     findAll() {
@@ -10,8 +11,20 @@ class CursoRepository {
             };
         });
     }
+
+    create(dadosDoCurso, idDoProfessor) {
+        const novoCurso = {
+            id: uuidv4(), 
+            titulo: dadosDoCurso.titulo,
+            descricao: dadosDoCurso.descricao,
+            idProfessor: idDoProfessor
+        };
+        
+        cursos.push(novoCurso); 
+        return novoCurso;
+    }
+
     findById(id) { return cursos.find(c => c.id === id); }
-    create(dados) { return dados; }
     update(id, dados) { return dados; }
     delete(id) { return { id: id, deleted: true }; }
     findAlunos(cursoId) { return []; }

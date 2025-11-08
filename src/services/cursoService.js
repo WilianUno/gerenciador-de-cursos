@@ -10,8 +10,18 @@ class CursoService {
             return { success: false, message: 'Erro ao buscar cursos.' };
         }
     }
+
+    createCurso(dadosDoCurso, idDoProfessor) {
+        try {
+            const novoCurso = cursoRepository.create(dadosDoCurso, idDoProfessor);
+            return { success: true, data: novoCurso };
+        } catch (error) {
+            console.error('Erro ao criar curso:', error);
+            return { success: false, message: 'Erro ao criar curso.' };
+        }
+    }
+    
     getCursoById(id) { return cursoRepository.findById(id); }
-    createCurso(dados) { return cursoRepository.create(dados); }
     updateCurso(id, dados) { return cursoRepository.update(id, dados); }
     deleteCurso(id) { return cursoRepository.delete(id); }
     getAlunosDoCurso(id) { return cursoRepository.findAlunos(id); }

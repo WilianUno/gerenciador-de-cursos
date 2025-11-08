@@ -1,0 +1,44 @@
+[33m93e8768[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Segue toda parte do front feita, ainda não tem ligação com o back
+[33m7367278[m feat: implementar fluxos completos de login, registro e auth do dashboard (front e back)
+[33m85337a7[m fix(auth): corrigir arquitetura C-S-R e proteger rotas privadas
+[33mb69296d[m Atualizando arquivos do projeto
+[33ma09faed[m inscricao.html
+[33m07629a5[m chore: ajuste no readme
+[33md405b30[m chore: ajustado as pastas e atualizado o readme
+[33m8b3def6[m chore: ajustado o server para ter tempo de token e utilizar os middlewares e rotas
+[33m287d568[m ajustado as depedencias necessarias para rodar
+[33m84dbf08[m chore: ajustado o gitignore
+[33mce0f13f[m feat: implementado o professorservice para fazer a logica de negocio
+[33m904ce76[m feat: implementado o cursoserrvice para fazer a logica de negocio
+[33m1194327[m feat: implementado o authservice para fazer a logica de negocio
+[33m6972597[m feat: implementado o alunoservice para fazer a logica de negocio
+[33m9c31269[m feat: implementado o dashboardroute para conectar as urls aos controllers
+[33m3d44214[m feat: implementado o publicroutes para conectar as urls aos controllers
+[33ma74156d[m feat: implementado o authroutes para conectar as urls aos controllers
+[33m3841168[m feat: implementado o professorroutes para conectar as urls aos controllers
+[33m66d2a23[m feat: implementado o cursoroutes para conectar as urls aos controllers
+[33m1240665[m feat: implementado o cursosroutes para conectar as urls aos controllers
+[33md9a2c41[m feat: implementado o alunoroutes para conectar as urls aos controllers
+[33m0405588[m feat: implementado o authcontroller para login, logout, registro e sessão
+[33m560f36e[m feat: implementado o professorcontroller para receber as requisições http
+[33m0731ecf[m feat: implementado o cursocontroller para receber as requisições http
+[33m11c4cc5[m feat: implementado o alunocontroller para receber as requisições http
+[33ma7602ee[m chore: criado pastas e arquivos necessarios para o funcionamento do backend
+[33m8967ee2[m chore: criar estrutura de pastas seguindo padrão mvc
+[33m3d1a94b[m chore: criar estrutura de pastas seguindo padrão mvc
+[33m3cc07f7[m feat: criar middleware de validção de dados
+[33m433f1af[m feat: adicionar middleware de tratamento de erros
+[33mb3f47dd[m feat: criar middleware de autenticação
+[33mfdf0fa0[m feat: implementar professorrepository para gestão dos professores
+[33m215368b[m feat: implementar cursorepository para gest
+[33m8a08c00[m feat: implementar alunorepository para gestão dos alunos
+[33m73f56da[m feat: implementar userRepository para ferencimaneot de usuarios
+[33me83b934[m feat: implementar estrutra de dados em mémoria
+[33md01a189[m chore: criar estrutura de pastas seguindo padrão MVC
+[33ma777c14[m feat: Primeira página de login do site com imagem
+[33mf20e651[m chore: adicionar .gitkeep para rastrear pastas vazias
+[33mea20d27[m feat(auth): implementar fluxo CSR e rota para login da API
+[33m0e60307[m[33m ([m[1;31morigin/develop[m[33m)[m Merge branch 'main' of https://github.com/WilianUno/academia-digital
+[33m57ab4b9[m feat: setup inicial do projeto com express e estrutura de pastas
+[33meb2ff13[m Rename project from 'academia-digital' to 'gerenciador-de-cursos'
+[33m6162c0d[m Initial commit

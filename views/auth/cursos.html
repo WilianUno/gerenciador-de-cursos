@@ -4,92 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formar & Crescer - Cursos</title>
-    <link rel="stylesheet" href="../../public/css/styles.css">
-    <link rel="icon" href="../../public/Imagens/icone.png" type="icone_site">
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/Imagens/icone.png" type="image/png">
 </head>
 <body>
     <nav class="navbar">
         <h1>Formar & Crescer</h1>
         <div>
-            <a href="index.html">Início</a>
-            <a href="cursos.html">Cursos</a>
-            <a href="sobre-nos.html">Sobre Nós</a>
-            <a href="contato.html">Contato</a>
+            <a href="/">Início</a>
+            <a href="/cursos">Cursos</a>
+            <a href="/sobre">Sobre Nós</a>
+            <a href="/contato">Contato</a>
         </div>
     </nav>
 
     <div class="dashboard-container">
         <aside class="sidebar">
             <h2>Navegação</h2>
-            <a href="index.html">Painel</a>
-            <a href="cursos.html" class="active">Cursos</a>
-            <a href="sobre-nos.html">Sobre Nós</a>
-            <a href="contato.html">Contato</a>
-            <a href="#">Professores</a>
-            <a href="#">Alunos</a>
+            <a href="/dashboard">Painel</a>
+            <a href="/cursos" class="active">Cursos</a>
+            <a href="/sobre">Sobre Nós</a>
+            <a href="/contato">Contato</a>
+            <a href="/professores">Professores</a>
+            <a href="/alunos">Alunos</a>
         </aside>
 
         <main class="main-content container">
             <h2>Nossos Cursos</h2>
-            <div class="cards-container">
-                <a href="course-details.html?course=sistemas-de-informacao" class="card">
-                    <h3>Sistemas de Informação</h3>
-                    <p>Desenvolva soluções de TI para o mercado.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=ciencia-da-computacao" class="card">
-                    <h3>Ciência da Computação</h3>
-                    <p>Explore os fundamentos da computação e tecnologia.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=engenharia-de-software" class="card">
-                    <h3>Engenharia de Software</h3>
-                    <p>Projete e construa sistemas de software robustos.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=analise-e-desenvolvimento-de-sistemas" class="card">
-                    <h3>Análise e Desenvolvimento de Sistemas</h3>
-                    <p>Crie e gerencie sistemas para diversas plataformas.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=engenharia-civil" class="card">
-                    <h3>Engenharia Civil</h3>
-                    <p>Planeje, projete e construa infraestruturas.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=direito" class="card">
-                    <h3>Direito</h3>
-                    <p>Atue na área jurídica com ética e excelência.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=administracao" class="card">
-                    <h3>Administração</h3>
-                    <p>Gerencie negócios e equipes de sucesso.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=enfermagem" class="card">
-                    <h3>Enfermagem</h3>
-                    <p>Cuide da saúde e bem-estar dos pacientes.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=arquitetura-e-urbanismo" class="card">
-                    <h3>Arquitetura e Urbanismo</h3>
-                    <p>Projete espaços funcionais e esteticamente agradáveis.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
-                <a href="course-details.html?course=educacao-fisica" class="card">
-                    <h3>Educação Física</h3>
-                    <p>Promova a saúde e o bem-estar através do esporte.</p>
-                    <button class="btn">Ver Detalhes</button>
-                </a>
+            
+            <div id="cards-container-cursos" class="cards-container">
+                <p>Carregando cursos...</p>
             </div>
         </main>
     </div>
 
     <a href="https://wa.me/5549999999999" class="whatsapp-button" target="_blank">
-        <img src="../../public/Imagens/icone_wpp.png" alt="WhatsAppCrescer">
+        <img src="/Imagens/icone_wpp.png" alt="WhatsAppCrescer">
     </a>
 
-    <script src="../../public/js/main.js"></script>
+    <script src="/js/curso.js"></script>
 </body>
 </html>

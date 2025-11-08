@@ -1,10 +1,8 @@
-// src/data/data.js
 const { v4: uuidv4 } = require('uuid');
 
-// Vamos usar 'let' porque esses arrays serão modificados
 let usuarios = [
     {
-        id: 'prof-uuid-1', // ID fixo para facilitar testes de login
+        id: 'prof-uuid-1',
         nome: 'Prof. Ana Silva',
         email: 'ana@email.com',
         username: 'ana@email.com',
@@ -12,7 +10,7 @@ let usuarios = [
         tipo: 'professor'
     },
     {
-        id: 'aluno-uuid-1', // ID fixo para facilitar testes
+        id: 'aluno-uuid-1',
         nome: 'Bruno Lima',
         email: 'bruno@email.com',
         username: 'bruno@email.com',
@@ -38,8 +36,6 @@ let matriculas = [
     }
 ];
 
-// --- ESTA É A PARTE MAIS IMPORTANTE ---
-// Garante que os arrays sejam exportados corretamente
 module.exports = {
     usuarios,
     cursos,

@@ -1,66 +1,19 @@
-const data = require('../data/data');
+const { cursos, usuarios } = require('../data/data.js');
 
 class CursoRepository {
-  findAll() {
-    return data.cursos;
-  }
-
-  findById(id) {
-    return data.cursos.find(curso => curso.id === parseInt(id));
-  }
-
-  create(cursoData) {
-    const newCurso = {
-      id: data.nextId.curso++,
-      vagasOcupadas: 0,
-      ...cursoData
-    };
-    data.cursos.push(newCurso);
-    return newCurso;
-  }
-
-  update(id, cursoData) {
-    const index = data.cursos.findIndex(curso => curso.id === parseInt(id));
-    if (index === -1) return null;
-    
-    data.cursos[index] = {
-      ...data.cursos[index],
-      ...cursoData,
-      id: data.cursos[index].id
-    };
-    return data.cursos[index];
-  }
-
-  delete(id) {
-    const index = data.cursos.findIndex(curso => curso.id === parseInt(id));
-    if (index === -1) return false;
-    
-    data.cursos.splice(index, 1);
-    return true;
-  }
-
-  incrementarVagas(id) {
-    const curso = this.findById(id);
-    if (curso) {
-      curso.vagasOcupadas++;
-      return curso;
+    findAll() {
+        return cursos.map(curso => {
+            const professor = usuarios.find(u => u.id === curso.idProfessor);
+            return {
+                ...curso,
+                nomeProfessor: professor ? professor.nome : 'Professor não encontrado'
+            };
+        });
     }
-    return null;
-  }
-
-  decrementarVagas(id) {
-    const curso = this.findById(id);
-    if (curso && curso.vagasOcupadas > 0) {
-      curso.vagasOcupadas--;
-      return curso;
-    }
-    return null;
-  }
-
-  temVagasDisponiveis(id) {
-    const curso = this.findById(id);
-    return curso && curso.vagasOcupadas < curso.vagas;
-  }
+    findById(id) { return cursos.find(c => c.id === id); }
+    create(dados) { return dados; }
+    update(id, dados) { return dados; }
+    delete(id) { return { id: id, deleted: true }; }
+    findAlunos(cursoId) { return []; }
 }
-
 module.exports = new CursoRepository();

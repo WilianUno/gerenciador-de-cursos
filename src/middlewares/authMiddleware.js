@@ -1,11 +1,19 @@
+// src/middlewares/authMiddleware.js
+
 const isAuthenticated = (req, res, next) => {
     if (req.session && req.session.user) {
         return next();
     }
     
-    return res.status(401).json({ 
-        error: 'Acesso negado. Você precisa estar autenticado.' 
-    });
+    // Se for API, retorna JSON
+    if (req.originalUrl.includes('/api/')) {
+        return res.status(401).json({ 
+            error: 'Acesso negado. Você precisa estar autenticado.' 
+        });
+    }
+    
+    // Se for PÁGINA, redireciona
+    res.redirect('/login');
 };
 
 const isAdmin = (req, res, next) => {
@@ -34,6 +42,7 @@ const redirectIfAuthenticated = (req, res, next) => {
     next();
 };
 
+// Este é o ÚNICO export deste arquivo
 module.exports = {
     isAuthenticated,
     isAdmin,

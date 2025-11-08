@@ -1,3 +1,4 @@
+// src/routes/authRoutes.js
 const express = require('express');
 const router = express.Router();
 const path = require('path');
@@ -16,9 +17,7 @@ router.post('/login', validateLogin, authController.login);
 router.post('/register', authController.register);
 
 router.post('/logout', isAuthenticated, authController.logout);
-
 router.get('/current-user', isAuthenticated, authController.getCurrentUser);
-
 router.post('/change-password', isAuthenticated, authController.changePassword);
 
 module.exports = router;

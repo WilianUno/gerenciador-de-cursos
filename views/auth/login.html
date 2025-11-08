@@ -1,48 +1,50 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formar & Crescer - Login</title>
-    
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="icon" href="/images/icone.png" type="image/png">
+    <title>Formar & Crescer - Transforme o seu futuro</title>
+    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="icon" href="../../public/Imagens/icone.png" type="icone_site">
 </head>
 <body>
-    <div class="main-content">
-
-        <div class="login-container">
-            <form class="login-form"> 
-                <h2>Entrar</h2>
-
-                <div class="input-group">
-                    <label for="username">Usuário</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-
-                <div id="error-message" class="error-message"></div>
-
-                <button type="submit">Acessar</button>
-                
-                <button type="button" class="criar-conta" onclick="window.location.href='/register'">Criar uma conta</button>
-
-                <div class="forgot-password">
-                    <a href="#">Esqueceu a senha?</a>
-                </div>
-            </form>
+    <nav class="navbar">
+        <h1>Formar & Crescer</h1>
+        <div>
+            <a href="index.html">Início</a>
+            <a href="cursos.html">Cursos</a>
+            <a href="sobre-nos.html">Sobre Nós</a>
+            <a href="contato.html">Contato</a>
         </div>
+    </nav>
 
-        <div class="right-side">
-            <img src="/images/cursos.jpg" alt="Oportunidades">
-        </div>
-
+    <div class="dashboard-container">
+        <main class="main-content login-layout">
+                <form class="login-form">
+                    <h2>Entrar</h2>
+                    <div class="input-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Acessar</button>
+                    <button type="button" class="btn criar-conta" onclick="window.location.href='register.html'">Criar uma conta</button>
+                    <div class="forgot-password">
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>
+                </form>
+            <div class="right-side">
+                <img src="../../public/Imagens/cursos.jpg" alt="Oportunidades">
+            </div>
+        </main>
     </div>
-
-    <script src="/js/login.js"></script>
+    <a href="https://wa.me/5549999999999" class="whatsapp-button" target="_blank">
+        <img src="../../public/Imagens/icone_wpp.png" alt="WhatsAppCrescer">
+    </a>
 </body>
 </html>
+
